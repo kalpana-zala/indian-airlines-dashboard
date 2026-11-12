@@ -2,6 +2,8 @@
 
 An interactive Power BI dashboard comparing five Indian airlines (Air India, IndiGo, Akasa Air, SpiceJet, Star Air) on passengers, capacity, fuel efficiency, CO₂ per passenger, flight duration, ratings and estimated profit. Pick an airline from the top tabs and the aircraft, airline name and KPI cards switch to that carrier, while the comparison charts keep all airlines and highlight the selected one.
 
+![Power BI report](images/powerbi_preview.jpg)
+
 **▶ Interactive preview (no install):** https://kalpana-zala.github.io/indian-airlines-dashboard/
 
 The preview is a web recreation of the Power BI report so anyone can click through it in a browser. The Power BI project itself is in `powerbi/`.
