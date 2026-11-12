@@ -11,69 +11,17 @@
   },
   "visual": {
     "visualType": "lineChart",
-    "query": {
-      "queryState": {
-        "Category": {
-          "projections": [
-            {
-              "field": {
-                "Column": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "Dim_Date"
-                    }
-                  },
-                  "Property": "MonthYear"
-                }
-              },
-              "queryRef": "Dim_Date.MonthYear",
-              "nativeQueryRef": "MonthYear"
-            }
-          ]
-        },
-        "Y": {
-          "projections": [
-            {
-              "field": {
-                "Measure": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "Fact_Flights"
-                    }
-                  },
-                  "Property": "Sel Passengers"
-                }
-              },
-              "queryRef": "Fact_Flights.Sel Passengers",
-              "nativeQueryRef": "Sel Passengers",
-              "displayName": "Passengers"
-            }
-          ]
-        }
-      },
-      "sortDefinition": {
-        "sort": [
-          {
-            "field": {
-              "Column": {
-                "Expression": {
-                  "SourceRef": {
-                    "Entity": "Dim_Date"
-                  }
-                },
-                "Property": "MonthYear"
-              }
-            },
-            "direction": "Ascending"
-          }
-        ],
-        "isDefaultSort": true
-      }
-    },
     "objects": {
       "categoryAxis": [
         {
           "properties": {
+            "axisType": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Continuous'"
+                }
+              }
+            },
             "showAxisTitle": {
               "expr": {
                 "Literal": {
@@ -178,19 +126,15 @@
                 }
               }
             }
+          },
+          "selector": {
+            "metadata": "Fact_Flights.Sel Passengers"
           }
         }
       ],
       "lineStyles": [
         {
           "properties": {
-            "lineStyle": {
-              "expr": {
-                "Literal": {
-                  "Value": "'solid'"
-                }
-              }
-            },
             "strokeWidth": {
               "expr": {
                 "Literal": {
@@ -432,6 +376,66 @@
           }
         }
       ]
+    },
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Dim_Date"
+                    }
+                  },
+                  "Property": "MonthStart"
+                }
+              },
+              "queryRef": "Dim_Date.MonthStart",
+              "nativeQueryRef": "MonthStart",
+              "displayName": "Month"
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact_Flights"
+                    }
+                  },
+                  "Property": "Sel Passengers"
+                }
+              },
+              "queryRef": "Fact_Flights.Sel Passengers",
+              "nativeQueryRef": "Sel Passengers",
+              "displayName": "Passengers"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Dim_Date"
+                  }
+                },
+                "Property": "MonthStart"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ],
+        "isDefaultSort": true
+      }
     }
   }
 }

@@ -1,8 +1,8 @@
-relationship 958b39a8-6aad-477b-b5e0-2c5d7dcbe5de
+relationship 8836e751-4992-412c-b427-d53fd5a1fa62
 	fromColumn: Fact_Flights.Airline
 	toColumn: Dim_Airline.Airline
 
-relationship 44fa72c1-304e-4dcb-bb04-bddffdd3f324
+relationship af7135e6-35cd-4b4e-9b75-16f66afeb430
 	fromColumn: Fact_Flights.Date
 	toColumn: Dim_Date.Date
 

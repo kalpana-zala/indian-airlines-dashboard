@@ -1,10 +1,10 @@
 table 'Airline Selector'
-	lineageTag: 45c469d5-7cf1-4035-8cf6-9b315d7465ab
+	lineageTag: 3428f116-6054-4129-bf41-223de411f716
 
 	column Airline
 		dataType: string
 		isNameInferred
-		lineageTag: 9559a2bb-845d-48a9-ae78-e972543ca4cc
+		lineageTag: c2a164b5-df0a-4418-913c-ba87a28f63f2
 		summarizeBy: none
 		sourceColumn: [Airline]
 

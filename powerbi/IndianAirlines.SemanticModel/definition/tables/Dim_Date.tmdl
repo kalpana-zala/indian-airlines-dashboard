@@ -1,12 +1,12 @@
 table Dim_Date
-	lineageTag: 750f324e-90b2-4165-a829-49481f2c6675
+	lineageTag: ace677d2-72dd-4e93-a5df-0b229daa6ded
 	dataCategory: Time
 
 	column Date
 		dataType: dateTime
 		formatString: Short Date
 		isNameInferred
-		lineageTag: 08e6128a-5d6f-4961-be16-bd9daf8e232c
+		lineageTag: 73ddeb59-9a14-49a7-ad09-8298bba53653
 		summarizeBy: none
 		sourceColumn: [Date]
 		isKey
@@ -15,7 +15,7 @@ table Dim_Date
 		dataType: int64
 		formatString: 0
 		isNameInferred
-		lineageTag: c96bb2db-43b5-4d1f-b649-b34e87cce433
+		lineageTag: 98bbe39b-b430-4520-8844-ab112a93a8f0
 		summarizeBy: none
 		sourceColumn: [Year]
 
@@ -24,7 +24,7 @@ table Dim_Date
 	column MonthYear
 		dataType: string
 		isNameInferred
-		lineageTag: eed668ba-e441-4b03-aca9-5e1b866628da
+		lineageTag: 71c47481-7004-4c58-8a28-77f331e0efb4
 		summarizeBy: none
 		sourceColumn: [MonthYear]
 		sortByColumn: MonthSort
@@ -33,13 +33,21 @@ table Dim_Date
 		dataType: int64
 		formatString: 0
 		isNameInferred
-		lineageTag: 420e8ac5-a0de-440a-b44c-3c8a97cc8012
+		lineageTag: 27bb2116-e334-4592-8b1d-577d516ee73c
 		summarizeBy: none
 		sourceColumn: [MonthSort]
 
 		annotation SummarizationSetBy = Automatic
 
+	column MonthStart
+		dataType: dateTime
+		formatString: mmm yyyy
+		isNameInferred
+		lineageTag: 9389c5f3-d5e3-453a-a876-2048ce6b3c50
+		summarizeBy: none
+		sourceColumn: [MonthStart]
+
 	partition Dim_Date = calculated
 		mode: import
-		source = ADDCOLUMNS(CALENDAR(DATE(2023,1,1), DATE(2025,12,31)), "Year", YEAR([Date]), "MonthYear", FORMAT([Date], "MMM YYYY"), "MonthSort", YEAR([Date])*100 + MONTH([Date]))
+		source = ADDCOLUMNS(CALENDAR(DATE(2023,1,1), DATE(2025,12,31)), "Year", YEAR([Date]), "MonthYear", FORMAT([Date], "MMM YYYY"), "MonthSort", YEAR([Date])*100 + MONTH([Date]), "MonthStart", DATE(YEAR([Date]), MONTH([Date]), 1))
 

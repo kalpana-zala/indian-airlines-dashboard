@@ -1,5 +1,5 @@
 expression DataFolder = "C:\Users\PrinceBI\Downloads\IndianAirlines_PowerBI\data\" meta [IsParameterQuery=true, Type="Text", IsParameterQueryRequired=true]
-	lineageTag: 88ac9658-9640-44f1-b19e-b8698c62f440
+	lineageTag: 135dae40-0653-49ff-bfb8-681a725f28bc
 
 	annotation PBI_ResultType = Text
 

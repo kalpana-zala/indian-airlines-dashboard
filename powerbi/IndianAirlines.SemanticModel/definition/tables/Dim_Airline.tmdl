@@ -1,16 +1,16 @@
 table Dim_Airline
-	lineageTag: 5e1d9f72-650a-4fa2-a446-dc098c1495ce
+	lineageTag: d727b39b-3f53-400e-b117-b289833ebff3
 
 	column Airline
 		dataType: string
-		lineageTag: a933d7d6-acfe-42d4-b195-78e342234c4f
+		lineageTag: c4cdc4ae-2e9d-41b0-8782-b365f5464558
 		summarizeBy: none
 		sourceColumn: Airline
 
 	column Rating
 		dataType: double
 		formatString: 0.00
-		lineageTag: b874745c-9f84-4f8e-aa06-785d1ec7a3af
+		lineageTag: 4825148d-b1cc-4395-a1f3-bcad94697cf1
 		summarizeBy: none
 		sourceColumn: Rating
 
@@ -18,20 +18,20 @@ table Dim_Airline
 
 	column BrandColor
 		dataType: string
-		lineageTag: 771a4fdf-65a1-4f62-a958-0600e2712220
+		lineageTag: dcf6b4fa-1ab6-4354-9aa2-e0c1b2613839
 		summarizeBy: none
 		sourceColumn: BrandColor
 
 	column PlaneImageURL
 		dataType: string
-		lineageTag: 36806182-acbd-4650-b54a-3aead2c89a7a
+		lineageTag: 6228e9fb-491e-4de4-ae63-fd24ea48c249
 		summarizeBy: none
 		sourceColumn: PlaneImageURL
 		dataCategory: ImageUrl
 
 	column PlaneImage
 		dataType: string
-		lineageTag: b7adeb22-18c8-4444-b2c0-7da7292a7392
+		lineageTag: 3955aeea-ce92-44b0-a6ba-a77eb6b659e5
 		summarizeBy: none
 		sourceColumn: PlaneImage
 		dataCategory: ImageUrl

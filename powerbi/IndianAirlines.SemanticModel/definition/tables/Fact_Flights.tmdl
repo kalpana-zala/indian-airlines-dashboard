@@ -1,99 +1,99 @@
 table Fact_Flights
-	lineageTag: 5dc43b8e-62d5-46c4-88be-5a2d0e54849b
+	lineageTag: 53d789ce-9aa1-4e93-ae31-4f15e0493472
 
 	measure 'Total Passengers' = SUM(Fact_Flights[Passengers])
 		formatString: #,0
-		lineageTag: 0f6bc48e-533b-4415-9124-c39f32d82cc7
+		lineageTag: 2018a083-9917-41f7-884d-2053e4e753fd
 
 	measure 'Passenger Capacity' = SUM(Fact_Flights[Capacity])
 		formatString: #,0
-		lineageTag: d75d7a0d-38f3-4522-8c6e-cc9210894f71
+		lineageTag: b22d11d2-9e01-4d09-9f1e-ee21e5455dc9
 
 	measure 'Avg Fuel Efficiency' = AVERAGE(Fact_Flights[FuelEfficiency])
 		formatString: 0.00
-		lineageTag: 854f8ee3-f4e9-4f41-bb19-10d3529348ba
+		lineageTag: 83dea35d-6f55-4d1d-a52b-d3d2fe50c234
 
 	measure 'Avg CO2 Per Pax' = AVERAGE(Fact_Flights[CO2PerPax])
 		formatString: 0.00
-		lineageTag: 14baf328-eae7-410d-b28e-5aa258070903
+		lineageTag: 51806b4e-5df1-4616-ae8a-87f01b3e19b2
 
 	measure 'Avg Flight Duration' = AVERAGE(Fact_Flights[FlightDuration])
 		formatString: 0.00
-		lineageTag: 38603442-51ae-4105-b9b5-5b0ac5fabf8b
+		lineageTag: acd7bfe5-fadd-4f8e-818f-9cdadd9f9457
 
 	measure 'Total Profit' = SUM(Fact_Flights[Profit])
 		formatString: #,0
-		lineageTag: 98dae864-de76-4bd8-a326-17748f3c0752
+		lineageTag: 73d14176-baf9-441a-a6e6-1de2b7b512e8
 
 	measure 'Avg Rating' = AVERAGE(Dim_Airline[Rating])
 		formatString: 0.00
-		lineageTag: 9e2f0bcd-d552-45ba-b7da-c36733e505ea
+		lineageTag: be9912d1-9800-4baa-8d4d-634a1c6b57f6
 
 	measure 'Selected Airline' = SELECTEDVALUE('Airline Selector'[Airline], "All Airlines")
-		lineageTag: 943cbd5e-c473-4645-808d-4c62dbac38f7
+		lineageTag: 2336a8b8-4f9f-41ba-9713-d116ef7dfc16
 
 	measure 'Sel Passengers' = CALCULATE([Total Passengers], TREATAS(VALUES('Airline Selector'[Airline]), Dim_Airline[Airline]))
 		formatString: #,0
-		lineageTag: b41bf438-55ed-486a-8f61-5b62752a7f49
+		lineageTag: 2e54c0ad-f435-486d-843b-d89f83962b8d
 
 	measure 'Sel Capacity' = CALCULATE([Passenger Capacity], TREATAS(VALUES('Airline Selector'[Airline]), Dim_Airline[Airline]))
 		formatString: #,0
-		lineageTag: 7cc6bafe-291c-4ea2-a105-c54079af1a0f
+		lineageTag: f119ae13-b82f-452b-a4ba-36114e46a8c0
 
 	measure 'Sel Fuel Efficiency' = CALCULATE([Avg Fuel Efficiency], TREATAS(VALUES('Airline Selector'[Airline]), Dim_Airline[Airline]))
 		formatString: 0.00
-		lineageTag: ef02d46b-3796-4780-b10a-f95f3a34a227
+		lineageTag: e19147ea-f9e6-4a46-9ec2-a252f1fb9768
 
 	measure 'Sel CO2 Per Pax' = CALCULATE([Avg CO2 Per Pax], TREATAS(VALUES('Airline Selector'[Airline]), Dim_Airline[Airline]))
 		formatString: 0.00
-		lineageTag: 9e27146a-7fbe-4c7f-8898-28e669944526
+		lineageTag: 064a7796-0065-43a2-b576-d274c6eb6c3d
 
 	measure 'Sel Flight Duration' = CALCULATE([Avg Flight Duration], TREATAS(VALUES('Airline Selector'[Airline]), Dim_Airline[Airline]))
 		formatString: 0.00
-		lineageTag: 5928fcd1-4f57-480d-8eb0-fe3b91f7e088
+		lineageTag: 40b68362-2db1-4dcc-9a38-024509898812
 
 	measure 'Selected Plane URL' = LOOKUPVALUE(Dim_Airline[PlaneImage], Dim_Airline[Airline], SELECTEDVALUE('Airline Selector'[Airline], "Air India"))
 		dataCategory: ImageUrl
-		lineageTag: a66605f5-52f2-42ba-af6b-464ec19c5e17
+		lineageTag: 43c51b94-01eb-480e-b295-ed4af65b77b1
 
 	measure 'Bar Color' = IF(SELECTEDVALUE(Dim_Airline[Airline]) = SELECTEDVALUE('Airline Selector'[Airline]), "#F26522", "#F4C29B")
-		lineageTag: bb798b43-328b-442b-9fa3-0612f11d3d11
+		lineageTag: 3256941b-6661-41b9-9721-f0ed036fa497
 
 	column Date
 		dataType: dateTime
 		formatString: Short Date
-		lineageTag: a4aa68b3-b6b2-4c8e-b090-ca67d712c8f1
+		lineageTag: c1242b2c-fa1c-446c-a621-cd06ae825b58
 		summarizeBy: none
 		sourceColumn: Date
 
 	column Airline
 		dataType: string
-		lineageTag: 58b1283f-32ff-4a38-a2cc-69dedf28a42f
+		lineageTag: a11d8f47-19d0-48f0-9c30-5dab082251fd
 		summarizeBy: none
 		sourceColumn: Airline
 
 	column Route
 		dataType: string
-		lineageTag: 1c41baf7-e31c-40f7-8572-57256efdd6ea
+		lineageTag: 969db280-c3d4-4bde-9ed9-1d0235f647b5
 		summarizeBy: none
 		sourceColumn: Route
 
 	column SourceCity
 		dataType: string
-		lineageTag: 2ce47804-be22-4c28-aabd-83396a82b2b9
+		lineageTag: c16fc219-55fa-443c-98f7-ef3b69624764
 		summarizeBy: none
 		sourceColumn: SourceCity
 
 	column DestinationCity
 		dataType: string
-		lineageTag: 9dd2a12c-e9e2-4895-a54a-935b8d3063b8
+		lineageTag: 035d7528-25f9-4877-8a08-a1b244c20663
 		summarizeBy: none
 		sourceColumn: DestinationCity
 
 	column Passengers
 		dataType: int64
 		formatString: 0
-		lineageTag: 9546dd05-9739-4059-8f11-645e42bc1118
+		lineageTag: 06940197-286b-4b0b-8439-1dab297a86dd
 		summarizeBy: sum
 		sourceColumn: Passengers
 
@@ -102,7 +102,7 @@ table Fact_Flights
 	column Capacity
 		dataType: int64
 		formatString: 0
-		lineageTag: 1a42fe51-c05b-4ab4-87be-d08bb0edb106
+		lineageTag: add996a7-1b31-4d50-9f18-2a45309222cd
 		summarizeBy: sum
 		sourceColumn: Capacity
 
@@ -111,7 +111,7 @@ table Fact_Flights
 	column FuelEfficiency
 		dataType: double
 		formatString: 0.00
-		lineageTag: 355f0d70-d9eb-4575-b2c9-a34eb6bdc5c1
+		lineageTag: eca3c730-3480-425b-ae0f-2ca5e6ea1480
 		summarizeBy: sum
 		sourceColumn: FuelEfficiency
 
@@ -120,7 +120,7 @@ table Fact_Flights
 	column CO2PerPax
 		dataType: double
 		formatString: 0.00
-		lineageTag: 5ffbc108-d220-4c46-ab6d-9a2fe2d667e2
+		lineageTag: a0c5d8ac-54fa-459e-b288-e93bd02fd463
 		summarizeBy: sum
 		sourceColumn: CO2PerPax
 
@@ -129,7 +129,7 @@ table Fact_Flights
 	column FlightDuration
 		dataType: double
 		formatString: 0.00
-		lineageTag: 65be43df-601f-40ef-96e1-42a3941bb032
+		lineageTag: 23673ca1-70e7-498f-9ad2-0c72c4d5d7b1
 		summarizeBy: sum
 		sourceColumn: FlightDuration
 
@@ -138,7 +138,7 @@ table Fact_Flights
 	column Profit
 		dataType: double
 		formatString: #,0
-		lineageTag: b648c9c4-19fd-489c-a6d5-ef1c8f340918
+		lineageTag: c3db8a80-2159-483a-bfff-1f29d93c4664
 		summarizeBy: sum
 		sourceColumn: Profit
 

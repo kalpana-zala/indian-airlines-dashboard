@@ -59,7 +59,7 @@
             "fontFamily": {
               "expr": {
                 "Literal": {
-                  "Value": "'Segoe UI Bold'"
+                  "Value": "'''Segoe UI Semibold'', wf_segoe-ui_semibold, helvetica, arial, sans-serif'"
                 }
               }
             },
@@ -67,6 +67,13 @@
               "expr": {
                 "Literal": {
                   "Value": "0D"
+                }
+              }
+            },
+            "labelPrecision": {
+              "expr": {
+                "Literal": {
+                  "Value": "2D"
                 }
               }
             }
