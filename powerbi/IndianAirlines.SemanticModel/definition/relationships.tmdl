@@ -1,0 +1,8 @@
+relationship 958b39a8-6aad-477b-b5e0-2c5d7dcbe5de
+	fromColumn: Fact_Flights.Airline
+	toColumn: Dim_Airline.Airline
+
+relationship 44fa72c1-304e-4dcb-bb04-bddffdd3f324
+	fromColumn: Fact_Flights.Date
+	toColumn: Dim_Date.Date
+

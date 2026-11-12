@@ -1,0 +1,28 @@
+{
+  "name": "CY24SU10",
+  "dataColors": [
+    "#D7263D",
+    "#F26522",
+    "#E3A12F",
+    "#F4C29B",
+    "#B9583A",
+    "#7A2E8C",
+    "#1F3C88",
+    "#2B9348"
+  ],
+  "foreground": "#1A1E28",
+  "background": "#FFFFFF",
+  "tableAccent": "#F26522",
+  "textClasses": {
+    "label": {
+      "fontFace": "Segoe UI",
+      "color": "#677083",
+      "fontSize": 10
+    },
+    "title": {
+      "fontFace": "Segoe UI Semibold",
+      "color": "#1A1E28",
+      "fontSize": 14
+    }
+  }
+}

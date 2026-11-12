@@ -1,0 +1,14 @@
+table 'Airline Selector'
+	lineageTag: 45c469d5-7cf1-4035-8cf6-9b315d7465ab
+
+	column Airline
+		dataType: string
+		isNameInferred
+		lineageTag: 9559a2bb-845d-48a9-ae78-e972543ca4cc
+		summarizeBy: none
+		sourceColumn: [Airline]
+
+	partition 'Airline Selector' = calculated
+		mode: import
+		source = SELECTCOLUMNS(Dim_Airline, "Airline", Dim_Airline[Airline])
+

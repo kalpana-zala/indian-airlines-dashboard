@@ -1,0 +1,158 @@
+table Fact_Flights
+	lineageTag: 5dc43b8e-62d5-46c4-88be-5a2d0e54849b
+
+	measure 'Total Passengers' = SUM(Fact_Flights[Passengers])
+		formatString: #,0
+		lineageTag: 0f6bc48e-533b-4415-9124-c39f32d82cc7
+
+	measure 'Passenger Capacity' = SUM(Fact_Flights[Capacity])
+		formatString: #,0
+		lineageTag: d75d7a0d-38f3-4522-8c6e-cc9210894f71
+
+	measure 'Avg Fuel Efficiency' = AVERAGE(Fact_Flights[FuelEfficiency])
+		formatString: 0.00
+		lineageTag: 854f8ee3-f4e9-4f41-bb19-10d3529348ba
+
+	measure 'Avg CO2 Per Pax' = AVERAGE(Fact_Flights[CO2PerPax])
+		formatString: 0.00
+		lineageTag: 14baf328-eae7-410d-b28e-5aa258070903
+
+	measure 'Avg Flight Duration' = AVERAGE(Fact_Flights[FlightDuration])
+		formatString: 0.00
+		lineageTag: 38603442-51ae-4105-b9b5-5b0ac5fabf8b
+
+	measure 'Total Profit' = SUM(Fact_Flights[Profit])
+		formatString: #,0
+		lineageTag: 98dae864-de76-4bd8-a326-17748f3c0752
+
+	measure 'Avg Rating' = AVERAGE(Dim_Airline[Rating])
+		formatString: 0.00
+		lineageTag: 9e2f0bcd-d552-45ba-b7da-c36733e505ea
+
+	measure 'Selected Airline' = SELECTEDVALUE('Airline Selector'[Airline], "All Airlines")
+		lineageTag: 943cbd5e-c473-4645-808d-4c62dbac38f7
+
+	measure 'Sel Passengers' = CALCULATE([Total Passengers], TREATAS(VALUES('Airline Selector'[Airline]), Dim_Airline[Airline]))
+		formatString: #,0
+		lineageTag: b41bf438-55ed-486a-8f61-5b62752a7f49
+
+	measure 'Sel Capacity' = CALCULATE([Passenger Capacity], TREATAS(VALUES('Airline Selector'[Airline]), Dim_Airline[Airline]))
+		formatString: #,0
+		lineageTag: 7cc6bafe-291c-4ea2-a105-c54079af1a0f
+
+	measure 'Sel Fuel Efficiency' = CALCULATE([Avg Fuel Efficiency], TREATAS(VALUES('Airline Selector'[Airline]), Dim_Airline[Airline]))
+		formatString: 0.00
+		lineageTag: ef02d46b-3796-4780-b10a-f95f3a34a227
+
+	measure 'Sel CO2 Per Pax' = CALCULATE([Avg CO2 Per Pax], TREATAS(VALUES('Airline Selector'[Airline]), Dim_Airline[Airline]))
+		formatString: 0.00
+		lineageTag: 9e27146a-7fbe-4c7f-8898-28e669944526
+
+	measure 'Sel Flight Duration' = CALCULATE([Avg Flight Duration], TREATAS(VALUES('Airline Selector'[Airline]), Dim_Airline[Airline]))
+		formatString: 0.00
+		lineageTag: 5928fcd1-4f57-480d-8eb0-fe3b91f7e088
+
+	measure 'Selected Plane URL' = LOOKUPVALUE(Dim_Airline[PlaneImage], Dim_Airline[Airline], SELECTEDVALUE('Airline Selector'[Airline], "Air India"))
+		dataCategory: ImageUrl
+		lineageTag: a66605f5-52f2-42ba-af6b-464ec19c5e17
+
+	measure 'Bar Color' = IF(SELECTEDVALUE(Dim_Airline[Airline]) = SELECTEDVALUE('Airline Selector'[Airline]), "#F26522", "#F4C29B")
+		lineageTag: bb798b43-328b-442b-9fa3-0612f11d3d11
+
+	column Date
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: a4aa68b3-b6b2-4c8e-b090-ca67d712c8f1
+		summarizeBy: none
+		sourceColumn: Date
+
+	column Airline
+		dataType: string
+		lineageTag: 58b1283f-32ff-4a38-a2cc-69dedf28a42f
+		summarizeBy: none
+		sourceColumn: Airline
+
+	column Route
+		dataType: string
+		lineageTag: 1c41baf7-e31c-40f7-8572-57256efdd6ea
+		summarizeBy: none
+		sourceColumn: Route
+
+	column SourceCity
+		dataType: string
+		lineageTag: 2ce47804-be22-4c28-aabd-83396a82b2b9
+		summarizeBy: none
+		sourceColumn: SourceCity
+
+	column DestinationCity
+		dataType: string
+		lineageTag: 9dd2a12c-e9e2-4895-a54a-935b8d3063b8
+		summarizeBy: none
+		sourceColumn: DestinationCity
+
+	column Passengers
+		dataType: int64
+		formatString: 0
+		lineageTag: 9546dd05-9739-4059-8f11-645e42bc1118
+		summarizeBy: sum
+		sourceColumn: Passengers
+
+		annotation SummarizationSetBy = Automatic
+
+	column Capacity
+		dataType: int64
+		formatString: 0
+		lineageTag: 1a42fe51-c05b-4ab4-87be-d08bb0edb106
+		summarizeBy: sum
+		sourceColumn: Capacity
+
+		annotation SummarizationSetBy = Automatic
+
+	column FuelEfficiency
+		dataType: double
+		formatString: 0.00
+		lineageTag: 355f0d70-d9eb-4575-b2c9-a34eb6bdc5c1
+		summarizeBy: sum
+		sourceColumn: FuelEfficiency
+
+		annotation SummarizationSetBy = Automatic
+
+	column CO2PerPax
+		dataType: double
+		formatString: 0.00
+		lineageTag: 5ffbc108-d220-4c46-ab6d-9a2fe2d667e2
+		summarizeBy: sum
+		sourceColumn: CO2PerPax
+
+		annotation SummarizationSetBy = Automatic
+
+	column FlightDuration
+		dataType: double
+		formatString: 0.00
+		lineageTag: 65be43df-601f-40ef-96e1-42a3941bb032
+		summarizeBy: sum
+		sourceColumn: FlightDuration
+
+		annotation SummarizationSetBy = Automatic
+
+	column Profit
+		dataType: double
+		formatString: #,0
+		lineageTag: b648c9c4-19fd-489c-a6d5-ef1c8f340918
+		summarizeBy: sum
+		sourceColumn: Profit
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Fact_Flights = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(DataFolder & "Fact_Flights.csv"),[Delimiter=",", Columns=11, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    Typed = Table.TransformColumnTypes(Promoted,{{"Date", type date}, {"Airline", type text}, {"Route", type text}, {"SourceCity", type text}, {"DestinationCity", type text}, {"Passengers", Int64.Type}, {"Capacity", Int64.Type}, {"FuelEfficiency", type number}, {"CO2PerPax", type number}, {"FlightDuration", type number}, {"Profit", type number}}, "en-US")
+				in
+				    Typed
+
+	annotation PBI_ResultType = Table
+

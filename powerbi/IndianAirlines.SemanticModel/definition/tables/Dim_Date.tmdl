@@ -1,0 +1,45 @@
+table Dim_Date
+	lineageTag: 750f324e-90b2-4165-a829-49481f2c6675
+	dataCategory: Time
+
+	column Date
+		dataType: dateTime
+		formatString: Short Date
+		isNameInferred
+		lineageTag: 08e6128a-5d6f-4961-be16-bd9daf8e232c
+		summarizeBy: none
+		sourceColumn: [Date]
+		isKey
+
+	column Year
+		dataType: int64
+		formatString: 0
+		isNameInferred
+		lineageTag: c96bb2db-43b5-4d1f-b649-b34e87cce433
+		summarizeBy: none
+		sourceColumn: [Year]
+
+		annotation SummarizationSetBy = Automatic
+
+	column MonthYear
+		dataType: string
+		isNameInferred
+		lineageTag: eed668ba-e441-4b03-aca9-5e1b866628da
+		summarizeBy: none
+		sourceColumn: [MonthYear]
+		sortByColumn: MonthSort
+
+	column MonthSort
+		dataType: int64
+		formatString: 0
+		isNameInferred
+		lineageTag: 420e8ac5-a0de-440a-b44c-3c8a97cc8012
+		summarizeBy: none
+		sourceColumn: [MonthSort]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Dim_Date = calculated
+		mode: import
+		source = ADDCOLUMNS(CALENDAR(DATE(2023,1,1), DATE(2025,12,31)), "Year", YEAR([Date]), "MonthYear", FORMAT([Date], "MMM YYYY"), "MonthSort", YEAR([Date])*100 + MONTH([Date]))
+

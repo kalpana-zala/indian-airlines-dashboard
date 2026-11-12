@@ -1,18 +1,21 @@
 # Indian Airlines Dashboard
 
-An interactive dashboard comparing five Indian airlines (Air India, IndiGo, Akasa Air, SpiceJet, Star Air) on passengers, capacity, fuel efficiency, CO₂ per passenger, flight duration, ratings and estimated profit. Pick an airline from the top tabs and the aircraft, airline name and KPI cards switch to that carrier, while the comparison charts keep all airlines and highlight the selected one.
+An interactive Power BI dashboard comparing five Indian airlines (Air India, IndiGo, Akasa Air, SpiceJet, Star Air) on passengers, capacity, fuel efficiency, CO₂ per passenger, flight duration, ratings and estimated profit. Pick an airline from the top tabs and the aircraft, airline name and KPI cards switch to that carrier, while the comparison charts keep all airlines and highlight the selected one.
 
-**Live demo:** https://kalpana-zala.github.io/indian-airlines-dashboard/
+## Open it
 
-![Dashboard preview](images/dashboard_preview.png)
+1. Clone or download this repo.
+2. Open `powerbi/IndianAirlines.pbip` in Power BI Desktop (enable the *Power BI Project* and *PBIR* preview features on older versions).
+3. Home → Transform data → Edit parameters → set **DataFolder** to the full path of this repo's `data` folder (ending with `\`).
+4. Refresh.
 
 ## What's in this repo
 
 | Path | Contents |
 | --- | --- |
-| `docs/index.html` | Self-contained interactive dashboard (served by GitHub Pages) |
+| `powerbi/IndianAirlines.pbip` | Power BI project: semantic model (TMDL) and report (PBIR) |
 | `data/Fact_Flights.csv` | 11,554 sample flights, 2023–2025 (route, passengers, capacity, fuel, CO₂, duration, profit) |
-| `data/Dim_Airline.csv` | Airline dimension with rating, brand colour and plane image URL |
+| `data/Dim_Airline.csv` | Airline dimension: rating, brand colour, plane image URL and embedded image |
 | `images/*.png` | Transparent aircraft cut-outs, one per airline (raw URLs used in Power BI) |
 | `scripts/generate_data.py` | Python script that generates the sample dataset |
 | `scripts/measures.dax` | All DAX tables and measures for the Power BI build |
@@ -20,14 +23,14 @@ An interactive dashboard comparing five Indian airlines (Air India, IndiGo, Akas
 ## How the dynamic parts work (Power BI)
 
 - **Airline tabs:** button slicer on a disconnected `Airline Selector` table, single select.
-- **Changing aircraft image:** `Dim_Airline[PlaneImageURL]` set to *Image URL* data category; an Image visual reads the `Selected Plane URL` measure through conditional formatting (fx).
+- **Changing aircraft image:** the plane images are embedded in `Dim_Airline[PlaneImage]` (Image URL data category); an Image visual reads the `Selected Plane URL` measure through conditional formatting (fx). Raw GitHub links are also in `PlaneImageURL`.
 - **KPI cards:** `Sel …` measures use `TREATAS` to apply the selected airline without filtering the comparison charts.
 - **Highlight in charts:** `Bar Color` measure returns orange for the selected airline, peach for the rest.
 - **Route / destination:** dropdown slicers on `Fact_Flights`.
 
 ## Tech
 
-Power BI (DAX, data modelling), Python (pandas, NumPy), HTML/CSS/JavaScript (hand-drawn SVG charts).
+Power BI (DAX, data modelling, Power Query, PBIP/TMDL), Python (pandas, NumPy, Pillow).
 
 ## Data and image credits
 

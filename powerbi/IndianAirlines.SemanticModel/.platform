@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "IndianAirlines"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "d847798c-1729-4316-b955-26d44e1e1552"
+  }
+}
