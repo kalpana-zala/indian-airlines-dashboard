@@ -1,0 +1,36 @@
+-- Date table
+Dim_Date =
+ADDCOLUMNS(
+    CALENDAR(DATE(2023,1,1), DATE(2025,12,31)),
+    "Year", YEAR([Date]),
+    "MonthYear", FORMAT([Date], "MMM YYYY"),
+    "MonthSort", YEAR([Date])*100 + MONTH([Date])
+)
+
+-- Disconnected selector for the top airline tabs (no relationship)
+Airline Selector = DISTINCT(Dim_Airline[Airline])
+
+-- Base measures
+Total Passengers = SUM(Fact_Flights[Passengers])
+Passenger Capacity = SUM(Fact_Flights[Capacity])
+Avg Fuel Efficiency = AVERAGE(Fact_Flights[FuelEfficiency])
+Avg CO2 Per Pax = AVERAGE(Fact_Flights[CO2PerPax])
+Avg Flight Duration = AVERAGE(Fact_Flights[FlightDuration])
+Total Profit = SUM(Fact_Flights[Profit])
+Avg Rating = AVERAGE(Dim_Airline[Rating])
+Selected Airline = SELECTEDVALUE('Airline Selector'[Airline], "All Airlines")
+
+-- KPIs for the selected airline
+Sel Passengers = CALCULATE([Total Passengers], TREATAS(VALUES('Airline Selector'[Airline]), Dim_Airline[Airline]))
+Sel Capacity   = CALCULATE([Passenger Capacity], TREATAS(VALUES('Airline Selector'[Airline]), Dim_Airline[Airline]))
+Sel Fuel       = CALCULATE([Avg Fuel Efficiency], TREATAS(VALUES('Airline Selector'[Airline]), Dim_Airline[Airline]))
+Sel CO2        = CALCULATE([Avg CO2 Per Pax], TREATAS(VALUES('Airline Selector'[Airline]), Dim_Airline[Airline]))
+Sel Duration   = CALCULATE([Avg Flight Duration], TREATAS(VALUES('Airline Selector'[Airline]), Dim_Airline[Airline]))
+
+-- Plane image (Image visual > Image URL > fx > Field value)
+Selected Plane URL =
+LOOKUPVALUE(Dim_Airline[PlaneImageURL], Dim_Airline[Airline], SELECTEDVALUE('Airline Selector'[Airline]))
+
+-- Highlight colour for bottom charts (fx > Field value)
+Bar Color =
+IF(SELECTEDVALUE(Dim_Airline[Airline]) = SELECTEDVALUE('Airline Selector'[Airline]), "#F26522", "#F4C29B")
